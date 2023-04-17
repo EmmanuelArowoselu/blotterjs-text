@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/blotter.min.js" integrity="sha512-Na4qwz8+Hb6JAVf8zFKtPri3XX/Z9/drSpFQuA9hUDnSYLFuu+GU0sfyDYw0SIUkvo/gSw//hCW/CjFJmIIc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/materials/liquidDistortMaterial.js" integrity="sha512-rvYwlDPzd/lRzBvegx4gYYSywGV31gBq2dTL80HdKMzJ3EdfIbQXNbxbHSdfgf52L+tk9F2dRvUtvZYAvXNFPA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+    <div id="main"></div>
+
+    <script>
+        container = document.getElementById('main');
+        const text = new Blotter.Text("I am asking you to wonder about something", {
+            family: 'serif',
+            size: 90,
+            fill: '#fff'
+        });
+
+        let material = new Blotter.LiquidDistortMaterial();
+        material.uniforms.uSpeed.value = 0.3;
+        material.uniforms.uVolatility.value = 0.05;
+        material.uniforms.uSeed.value = 0.1;
+
+        let blotter = new Blotter(material, {
+            texts: text
+        });
+
+        let scope = blotter.forText(text);
+
+        scope.appendTo(container);
+    </script>
+    
+</body>
+</html>
